@@ -1,0 +1,11 @@
+{
+  "name": "wetube",
+  "version": "1.0.0",
+  "description": "Youtube clone",
+  "main": "index.js",
+  "author": "sepo21",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
