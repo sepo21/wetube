@@ -1,8 +1,17 @@
+import axios from "axios";
+
 const videoContainer = document.getElementById("jsVideoPlayer");
 const videoPlayer = document.querySelector("#jsVideoPlayer video");
 const playBtn = document.getElementById("jsPlayButton");
 const volumeBtn = document.getElementById("jsVolumeButton");
 const fullScreenBtn = document.getElementById("jsFullScreen");
+
+const registerView = () => {
+  const videoId = window.location.href.split("/videos/")[1];
+  fetch(`/api/${videoId}/view`, {
+    method: "POST",
+  });
+};
 
 function handlePlayClick() {
   if (videoPlayer.paused) {
@@ -36,11 +45,17 @@ function goFullScreen() {
   fullScreenBtn.removeEventListener("click", goFullScreen);
   fullScreenBtn.addEventListener("click", exitFullScreen);
 }
+function handleEnded() {
+  registerView();
+  videoPlayer.currentTime = 0;
+  playBtn.innerHTML = '<i class="fas fa-play"></i>';
+}
 
 function init() {
   playBtn.addEventListener("click", handlePlayClick);
   volumeBtn.addEventListener("click", handleVolumeClick);
   fullScreenBtn.addEventListener("click", goFullScreen);
+  videoPlayer.addEventListener("ended", handleEnded);
 }
 
 if (videoContainer) {
