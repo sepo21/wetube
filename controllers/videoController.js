@@ -138,6 +138,27 @@ export const postAddComment = async (req, res) => {
     video.save();
     res.status(200);
   } catch (error) {
+    if (!user) {
+      console.log("User is not logged in");
+    }
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+export const postDelComment = async (req, res) => {
+  const {
+    params: { id },
+    body: { nth },
+  } = req;
+  try {
+    const video = await Video.findById(id).populate("comments");
+    await Comment.findByIdAndRemove(video.comments[nth].id);
+    // video.save();
+    res.status(200);
+  } catch (error) {
+    console.log(error);
     res.status(400);
   } finally {
     res.end();

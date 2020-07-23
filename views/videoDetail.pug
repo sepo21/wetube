@@ -28,9 +28,11 @@ block content
                 span.video__comment-number
                 span#jsCommentNumber=video.comments.length
                 |  comments
-
             form.add__comment#jsAddComment
                 input(type="text",placeholder="Add a comment")
             ul.video__comments-list#jsCommentList
                 each comment in video.comments.reverse()
-                    li=comment.text
+                    .comment-container
+                        li=comment.text
+                        if loggedUser && loggedUser.id == comment.creator
+                            i.far.fa-trash-alt.jsDelBtn
