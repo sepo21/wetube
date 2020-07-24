@@ -32,6 +32,10 @@ const REGISTER_VIEW = "/:id/view";
 const ADD_COMMENT = "/:id/addComment";
 const DEL_COMMENT = "/:id/delComment";
 
+// Facebook
+const FB = "/auth/facebook";
+const FB_CALLBACK = "/auth/facebook/callback";
+
 const routes = {
   home: HOME,
   join: JOIN,
@@ -74,6 +78,8 @@ const routes = {
   registerView: REGISTER_VIEW,
   addComment: ADD_COMMENT,
   delComment: DEL_COMMENT,
+  facebook: FB,
+  facebookCallback: FB_CALLBACK,
 };
 
 export default routes;
