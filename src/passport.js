@@ -31,6 +31,8 @@ passport.use(
       callbackURL: process.env.PRODUCTION
         ? `https://sheltered-earth-82302.herokuapp.com${routes.facebookCallback}`
         : `http://localhost:4000${routes.facebookCallback}`,
+      profileFields: ["id", "displayName", "photos", "email"],
+      scope: ["public_profile", "email"],
     },
     facebookLoginCallback
   )
