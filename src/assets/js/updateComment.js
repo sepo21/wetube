@@ -42,7 +42,6 @@ const delComment = (event) => {
   const btnDiv = btn.parentNode;
   btnDivs = document.querySelectorAll("#jsCommentList div");
   const nth = btnDivs.length - 1 - getElementIndex(btnDiv);
-  console.log(nth);
   sendDelComment(nth);
 };
 
